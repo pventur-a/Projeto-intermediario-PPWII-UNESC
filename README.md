@@ -72,7 +72,7 @@ Resultado
 
 Exemplo
 
-    //GET https://music-top10.herokuapp.com/api/afroHouseTop10/?search=Kim
+    // GET https://music-top10.herokuapp.com/api/afroHouseTop10/?search=Kim
 
 Resultado
 
