@@ -1,0 +1,26 @@
+{
+  "name": "projetointermediario_ppw_unesc",
+  "version": "1.0.0",
+  "description": "## Sobre o projeto   Criar uma API que seja capaz de coletar (Web Scraping) e integrar dados na Web e responder com dados ao cliente de maneira estruturada usando JSON.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "node-html-parser": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/pventur-a/projetointermediario_ppw_unesc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/pventur-a/projetointermediario_ppw_unesc/issues"
+  },
+  "homepage": "https://gitlab.com/pventur-a/projetointermediario_ppw_unesc#readme"
+}
