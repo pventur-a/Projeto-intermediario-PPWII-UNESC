@@ -8,7 +8,7 @@
 
 ## Desafio
   
-- [x] Top 10 das músicas.
+- [x] Lista das musicas.
 - [X] Top 10 de determinado género de música  
 
 ## TECNOLOGIAS
@@ -20,7 +20,7 @@
 
 ## EndPoints
 
-    GET https://music-top10.herokuapp.com/api/beatportTop10
+    GET https://the-best-music.herokuapp.com/api/beatport
 
 Exemplo
 
@@ -31,9 +31,9 @@ Exemplo
         "GENRES": "Deep House"
     }...
 
-### Top 10 Afro House
+### Afro House
 
-    // GET https://music-top10.herokuapp.com/api/afroHouseTop10
+    // GET https://the-best-music.herokuapp.com/api/afroHouse
 
 Exemplo
 
@@ -49,7 +49,7 @@ Passando parâmetro na URL (Query string) para personalizar a requisição.
 Pesquisando os "ARTISTS" onde o nome inclui "Fr".
 Exemplo: ?search=Fr
 
-        // GET https://music-top10.herokuapp.com/api/beatportTop10/?search=Fr
+        // GET https://the-best-music.herokuapp.com/api/beatport/?search=Fr
 
 Resultado
 
@@ -72,7 +72,7 @@ Resultado
 
 Exemplo
 
-    // GET https://music-top10.herokuapp.com/api/afroHouseTop10/?search=Kim
+    // GET https://the-best-music.herokuapp.com/api/afroHouse/?search=Kim
 
 Resultado
 

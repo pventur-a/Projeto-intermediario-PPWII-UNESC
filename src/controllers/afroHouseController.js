@@ -1,89 +1,38 @@
-
-
 const express = require('express')
 const router = express.Router()
-const axios = require('axios')
-const { parse } = require('node-html-parser');
+const music = require('./baseController')
+
+const url = 'https://www.beatport.com/genre/afro-house/89'
+
 
 router.get('/', async (req, res,) => {
 
   // query string
   const consulta = req.query.search
-  // console.log(consulta);
 
-  const url = 'https://www.beatport.com/genre/afro-house/89'
   var listMusic = []
-  try {
-
-    const { data } = await axios(url)
-    const root = parse(data)
-
-    const li = root.querySelectorAll('.bucket-item.ec-item.top-ten-track')
-    const remixed = root.querySelectorAll('.top-ten-track-remixed')
-    // const links = root.querySelectorAll('.top-ten-track-meta a')
-    // console.log(root.querySelectorAll('.top-ten-track-meta a')[0]['_rawAttrs']['href'])
-
-    li.forEach((track, remix, link) => {
-      var i = {
-        "TRACK": track['_attrs']['data-ec-name'],
-        "REMIXED": remixed[remix].textContent,
-        "ARTISTS": track['_attrs']['data-ec-d1'],
-        "BRAND": track['_attrs']['data-ec-brand'],
-        "GENRES": track['_attrs']['data-ec-d3'],
-        // "link": url + links[link]['_rawAttrs']['href']
-        "timestamp": Date.now()
-      }
-
-      listMusic.push(i)
-
-    })
-
-  } catch (error) {
-    console(error)
-  }
+  listMusic.push(await music(url))
 
   if (consulta) {
-    const list = listMusic.filter(art => art.ARTISTS.toLowerCase().includes(consulta.toLowerCase()))
+    const list = listMusic[0].filter(art => art.ARTISTS.toLowerCase().includes(consulta.toLowerCase()))
     if (list) {
       return res.json(list)
     }
   }
-  return res.json(listMusic)
+
+  console.log()
+  return res.json(listMusic[0])
 })
 
 router.get('/:id', async (req, res,) => {
 
   var id = req.params.id
 
-  const url = 'https://www.beatport.com/genre/afro-house/89'
   var listMusic = []
-  try {
-
-    const { data } = await axios(url)
-    const root = parse(data)
-
-    const li = root.querySelectorAll('.bucket-item.ec-item.top-ten-track')
-    const remixed = root.querySelectorAll('.top-ten-track-remixed')
-    // const links = root.querySelectorAll('.top-ten-track-meta a')
-    // console.log(root.querySelectorAll('.top-ten-track-meta a')[0]['_rawAttrs']['href'])
-
-    li.forEach((track, remix, link) => {
-      let i = {
-        "TRACK": track['_attrs']['data-ec-name'],
-        "REMIXED": remixed[remix].textContent,
-        "ARTISTS": track['_attrs']['data-ec-d1'],
-        "BRAND": track['_attrs']['data-ec-brand'],
-        "GENRES": track['_attrs']['data-ec-d3'],
-        // "link": url + links[link]['_rawAttrs']['href']
-        "timestamp": Date.now()
-      }
-      listMusic.push(i)
-    })
-  } catch (error) {
-    console(error)
-  }
+  listMusic.push(await music(url))
+  
   // console.log(listMusic)
-  res.json(listMusic[id])
+  return res.json(listMusic[0][id])
 })
 
 module.exports = router
